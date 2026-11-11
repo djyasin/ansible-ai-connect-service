@@ -239,49 +239,6 @@ paths:
         '503':
           description: Service Unavailable
       x-ai-description: Create an explanation of a role
-  /ai/feedback/:
-    post:
-      operationId: ai_feedback_create
-      description: Feedback API for the AI service
-      summary: Feedback API for the AI service
-      tags:
-      - ai
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FeedbackRequest'
-            examples:
-              ValidInlineSuggestionFeedbackExample:
-                value:
-                  inlineSuggestion:
-                    userActionTime: 5155
-                    action: '0'
-                    suggestionId: a1b2c3d4-e5f6-a7b8-c9d0-e1f2a3b4c5d6
-                summary: Feedback Request sample for inline suggestion to identify
-                  if the suggestion is accepted or ignored.
-                description: A valid inline suggestion feedback sample request to
-                  get details about the suggestion like user decision time, user action
-                  and suggestion id.
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/FeedbackRequest'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/FeedbackRequest'
-      security:
-      - oauth2:
-        - read
-        - write
-      - cookieAuth: []
-      responses:
-        '200':
-          description: Success
-        '400':
-          description: Bad Request
-        '401':
-          description: Unauthorized
-      x-ai-description: Create new ai feedback
   /ai/generations/playbook/:
     post:
       operationId: ai_generations_playbook_create
